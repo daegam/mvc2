@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>앱로그인</title>
+</head>
+
+<body>
+	<div id="mem_id"></div>
+	<div id="mem_password"></div>
+	<div id="mem_name"></div>
+	<div id="mem_age"></div>
+
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			/* $.getJSON("http://127.0.0.1:8080/daegam/applogin", function(data) {
+				//{"id":"abc", "pw":"def", "name":"ddd"}
+
+				alert(data.data1); //아이디 출력
+				alert(data.data2); //암호 출력
+			});
+
+			$.getJSON("http://127.0.0.1:8080/daegam/applogin1", function(data) {
+				//[{"id":"abc", "pw":"def", "name":"ddd"},{"id":"abc", "pw":"def", "name":"ddd"}]
+
+				var len = data.length; //2가됨.
+				for (var i = 0; i < len; i++) {
+					alert(data[i].id); //아이디 출력
+					alert(data[i].pw); //암호 출력
+				}
+
+			}); */
+			
+			$.getJSON("http://127.0.0.1:8080/daegam/applogin2?id=t", function(data){
+				$('#mem_id').text(data.id);
+				$('#mem_password').text(data.password);
+				$('#mem_name').text(data.name);
+				$('#mem_age').text(data.age);
+			});
+		});
+	</script>
+</body>
+</html>

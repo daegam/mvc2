@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Item">
+	<select id="getItemList" parameterType="int" resultType="Item">
+	    SELECT * FROM `item` ORDER BY no ASC LIMIT #{start}, 20  
+	</select>
+</mapper>

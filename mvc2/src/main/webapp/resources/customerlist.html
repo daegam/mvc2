@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>우편번호</th>
+                    <th>주소</th>
+                    <th>상세주소</th>
+                    <th>생년월일</th>
+                    <th>등록일자</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="modal fade" id="edit_modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">수정</h4>
+				</div>
+				<form class="form-horizontal" action="customeredit.do" method="post">
+					<div class="modal-body">
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">이름</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="name">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">전화번호</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="tel">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">우편번호</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="postcode">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">주소</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="addr1">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">상세주소</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="addr2">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-2 control-label">생년월일</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="birth">
+						    </div>
+						  </div>
+						
+					</div>
+					<div class="modal-footer" align="center">
+						<input type="submit" class="btn btn-success" value="수정하기">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+					</div>
+				</form>	
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script>
+	    $(function(){
+	    	
+	    	var list;
+	    	
+	    	$.get('http://127.0.0.1:8080/daegam/customerlist.do', function(customerList) {
+	    		list = customerList;
+	            for (var i = 0; i < customerList.length; i++) {
+	                $('#list').append(
+	                    '<tr>' +
+	                    '<td>' + customerList[i].customer_no + '</td>' +
+	                    '<td>' + customerList[i].customer_name + '</td>' +
+	                    '<td>' + customerList[i].customer_tel + '</td>' +
+	                    '<td>' + customerList[i].customer_postcode + '</td>' +
+	                    '<td>' + customerList[i].customer_addr1 + '</td>' +
+	                    '<td>' + customerList[i].customer_addr2 + '</td>' +
+	                    '<td>' + customerList[i].customer_birth + '</td>' +
+	                    '<td>' + customerList[i].customer_date + '</td>' +
+	                    '<td><input type="button" class="btn btn-success btn_edit" value="수정"/></td>'+
+	                    '</tr>'
+	                );
+	            }
+	   		});
+	    	
+	    	$(document).on("click",".btn_edit", function (){
+	    		var idx = $(this).index('.btn_edit');
+	    		$('#name').val(list[idx].customer_name);
+	    		$('#tel').val(list[idx].customer_tel);
+	    		$('#postcode').val(list[idx].customer_postcode);
+	    		$('#addr1').val(list[idx].customer_addr1);
+	    		$('#addr2').val(list[idx].customer_addr2);
+	    		$('#birth').val(list[idx].customer_birth);
+	    		$('#edit_modal').modal('show');
+	    	});
+	    	
+	    });
+    </script>
+</body>
+</html>

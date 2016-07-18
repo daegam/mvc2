@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BankAccount">
+	<insert id="reg" parameterType="BankAccount">
+		INSERT INTO `bank_account`(account_no, customer_no, account_money) VALUES (#{account_no}, #{customer_no}, #{account_money})
+	</insert>
+	
+	<select id="getAccount" parameterType="String" resultType="BankAccount">
+	    SELECT * FROM `bank_account` WHERE account_no = #{account_no}
+	</select>
+	
+	<update id="deposit" parameterType="BankAccount">
+	    UPDATE `bank_account` SET account_money = account_money + #{deposit_money} WHERE account_no = #{account_no}
+	</update>
+	<update id="withdrawal" parameterType="BankAccount">
+	    UPDATE `bank_account` SET account_money = account_money - #{withdrawal_money} WHERE account_no = #{account_no} AND (account_money - #{withdrawal_money}) > 0
+	</update>
+</mapper>

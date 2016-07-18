@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 설정 -->
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+
+	<!-- 별명 -->
+	<typeAliases>
+		<typeAlias alias="Member" type="com.example.daegam.vo.Member" />
+		<typeAlias alias="Board" type="com.example.daegam.vo.Board" />
+		<typeAlias alias="BankCustomer" type="com.example.daegam.vo.BankCustomer" />
+		<typeAlias alias="BankCustomerPage" type="com.example.daegam.vo.BankCustomerPage" />
+		<typeAlias alias="BankAccount" type="com.example.daegam.vo.BankAccount" />
+		<typeAlias alias="BankCustomerAccount" type="com.example.daegam.vo.BankCustomerAccount" />
+		<typeAlias alias="Item" type="com.example.daegam.vo.Item" />
+		<typeAlias alias="AppMember" type="com.example.daegam.vo.AppMember" />
+	</typeAliases>
+</configuration>

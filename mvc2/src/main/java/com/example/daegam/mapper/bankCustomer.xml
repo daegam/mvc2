@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BankCustomer">
+
+	<insert id="join" parameterType="BankCustomer">
+		INSERT INTO `bank_customer`(customer_name, customer_tel, customer_postcode, customer_addr1, customer_addr2, customer_birth) 
+		VALUES (#{customer_name}, #{customer_tel}, #{customer_postcode}, #{customer_addr1}, #{customer_addr2}, #{customer_birth});
+	</insert>
+	
+	<select id="getCount" parameterType="BankCustomerPage" resultType="int">
+	    SELECT COUNT(*) FROM `bank_customer` WHERE ${s_type} LIKE CONCAT('%', #{s_text}, '%')
+	</select>
+	
+	<select id="getList" parameterType="BankCustomerPage" resultType="BankCustomer">
+	    SELECT * FROM `bank_customer` WHERE ${s_type} LIKE CONCAT('%', #{s_text}, '%') ORDER BY customer_no DESC LIMIT #{start},5
+	</select>
+	<select id="getCustomerAccount" parameterType="int" resultType="BankCustomerAccount">
+	    SELECT * FROM `bank_customer` c INNER JOIN `bank_account` a ON c.customer_no = a.customer_no WHERE c.customer_no = #{customer_no}
+	</select>
+	<select id="appList" resultType="BankCustomer">
+	    SELECT * FROM `bank_customer` WHERE 1
+	</select>
+</mapper>

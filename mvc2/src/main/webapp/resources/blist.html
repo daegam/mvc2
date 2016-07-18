@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판 목록</title>
+<link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<table class="table"></table>
+		<input type="button" class="btn btn-success btn-block" id="btn_add" value="더보기" />
+	</div>
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+	$(function(){
+		$('.table').append(
+			'<thead>' + 
+			'<tr>' +
+				'<th>번호</th>' +
+				'<th>제목</th>' +
+				'<th>작성자</th>' +
+				'<th>날짜</th>' +
+			'</tr>' +
+			'</thead>'
+		);
+
+		var cnt = 0;
+		getData = function(cnt){
+			$.getJSON("http://127.0.0.1:8080/daegam/appboard?start="+cnt, function(data){
+				var len = data.length;
+				for(var i=0; i<len; i++){
+					$('.table').append(
+						'<tr>' +
+							'<td>' + data[i].no + '</td>' + 
+							'<td>' + data[i].title + '</td>' + 
+							'<td>' + data[i].writer + '</td>' + 
+							'<td>' + data[i].write_date + '</td>' + 
+						'</tr>'
+					);
+				}
+				$("html, body").animate({scrollTop:$(document).height}, 1000);
+			});
+		}
+		
+		$("#btn_add").click(function(){
+			cnt+=10;
+			getData(cnt);
+		});
+		
+		getData(0);
+	});
+</script>
+</body>
+</html>
