@@ -25,9 +25,13 @@ import com.example.daegam.vo.Board;
 import com.example.daegam.vo.Item;
 import com.example.daegam.vo.Member;
 
+
+//앱 컨트롤러 테스트
 @Controller
 public class AppController {
-
+	
+	
+	//변수생성
 	@Resource(name = "objDao")
 	private CommonDao objDao;
 
