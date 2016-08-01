@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Half Slider - Start Bootstrap Template</title>
+<title>펜션</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include><br><br>
+	<jsp:include page="member/header.jsp"></jsp:include><br><br>
 	<!-- Half Page Image Background Carousel Header -->
 	<div id="myCarousel" class="carousel slide">
 		<!-- Indicators -->

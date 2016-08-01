@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin">
+
+	<select id="login" parameterType="Admin" resultType="Admin">
+	    SELECT * FROM `admin` WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<insert id="regPension" parameterType="Pension">
+	    INSERT INTO `pension`(name, picture_name, busy_season_start, busy_season_end, check_in_time, check_out_time, addr, tel)
+	    VALUES (#{name}, #{picture_name}, #{busy_season_start}, #{busy_season_end}, #{check_in_time}, #{check_out_time}, #{addr}, #{tel})
+	</insert>
+	
+	<select id="getPensionList" resultType="Pension">
+	    SELECT * FROM `pension` ORDER BY no ASC;
+	</select>
+	
+	<!-- 방 목록 가져오기 -->
+	<select id="getRoomList" parameterType="int" resultType="Room">
+	    SELECT * FROM `room` WHERE pension_no = #{pension_no} ORDER BY no ASC
+	</select>
+	
+	<!-- 방 삭제 -->
+	<delete id="deleteRoom" parameterType="int">
+	    DELETE FROM `room` WHERE no = #{room_no}
+	</delete>
+	
+	<!-- 방 수정 -->
+	<update id="updateRoom" parameterType="Room">
+	    UPDATE `room` set
+	     name = #{name}, 
+	     pension_no = #{pension_no}, 
+	     size = #{size}, 
+	     standard_num = #{standard_num}, 
+	     max_num = #{max_num}, 
+	     weekdays_price = #{weekdays_price}, 
+	     weekend_price = #{weekend_price}, 
+	     adult_addprice = #{adult_addprice}, 
+	     child_addprice = #{child_addprice}
+	     	WHERE no = #{no}
+	</update>
+	
+	<!-- 방 추가 -->
+	<insert id="addRoom" parameterType="Room">
+	    INSERT INTO `room` (name, pension_no, size, standard_num, max_num, weekdays_price, weekend_price, adult_addprice, child_addprice)
+	    VALUES (#{name}, #{pension_no}, #{size}, #{standard_num}, #{max_num}, #{weekdays_price}, #{weekend_price}, #{adult_addprice}, #{child_addprice})
+	</insert>
+</mapper>

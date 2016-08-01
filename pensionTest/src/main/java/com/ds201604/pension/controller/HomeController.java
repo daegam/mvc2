@@ -1,4 +1,4 @@
-package com.example.daegam.controller;
+package com.ds201604.pension.controller;
 
 import org.springframework.stereotype.Controller;
 

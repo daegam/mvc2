@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include><br>
 	<br>
-	<br>
+	<br> 
 	<div class="container">
 		<div class="page-header">
 			<h1>회원가입</h1>
@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">패스워드</label>
 				<div class="col-sm-6" id="div_pwd">
-					<form:password path="pwd" class="form-control" id="pwd" placeholder="영문,숫자,특수문자가 포함된 6자리 이상 아이디만 사용 가능합니다!" />
+					<form:password path="pwd" class="form-control" id="pwd" placeholder="영문,숫자,특수문자가 포함된 8자리 이상 비밀번호만 사용 가능합니다!" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -212,9 +212,6 @@
 				}
 			});
 			
-			
-
-			
 			$('#btn_join').bind('click', function(){
 				
 				if($('#detail_addr').val().trim() == "" || $('#postcode').val() == "" || $('#addr').val() == ""){
@@ -222,7 +219,6 @@
 				}else{
 					flag = true;
 				}
-				
 				if(flag == false){
 					alert("입력이 되지 않았거나 잘못 입력된 곳을 다시입력해주세요!");				
 					return false;

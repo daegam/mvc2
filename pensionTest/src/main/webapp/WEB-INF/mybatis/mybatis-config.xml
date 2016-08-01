@@ -9,6 +9,9 @@
 
 	<!-- 별명 -->
 	<typeAliases>
-		<typeAlias alias="Member" type="com.example.daegam.vo.Member" />
+		<typeAlias alias="Member" type="com.ds201604.pension.vo.Member" />
+		<typeAlias alias="Admin" type="com.ds201604.pension.vo.Admin" />
+		<typeAlias alias="Pension" type="com.ds201604.pension.vo.Pension" />
+		<typeAlias alias="Room" type="com.ds201604.pension.vo.Room" />
 	</typeAliases>
 </configuration> 

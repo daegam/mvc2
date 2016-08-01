@@ -13,6 +13,6 @@ $(function() {
 		$('#login-form-link').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
+		$.get("http://127.0.0.1:8080:daegam/loginAdmin.do");
 	});
-
 });

@@ -1,4 +1,4 @@
-package com.example.daegam.vo;
+package com.ds201604.pension.vo;
 
 public class Member {
 	private String id;

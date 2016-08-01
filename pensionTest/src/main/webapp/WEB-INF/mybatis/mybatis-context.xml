@@ -22,7 +22,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:com/example/daegam/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath:com/ds201604/pension/mapper/*.xml" />
 		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
 
 		<property name="transactionFactory">
@@ -35,7 +35,10 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
-	<bean id="memberDao" class="com.example.daegam.dao.MemberDao"> 
+	<bean id="memberDao" class="com.ds201604.pension.dao.MemberDao"> 
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="adminDao" class="com.ds201604.pension.dao.AdminDao"> 
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 </beans>

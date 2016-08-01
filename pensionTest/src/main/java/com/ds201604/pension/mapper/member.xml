@@ -7,4 +7,8 @@
 		INSERT INTO `member`(id, pwd, name, tel, postcode, addr, detail_addr) 
 		VALUES(#{id}, #{pwd}, #{name}, #{tel}, #{postcode}, #{addr}, #{detail_addr});
 	</insert>
+	
+	<select id="login" parameterType="Member" resultType="Member">
+	    SELECT * FROM `member` WHERE id=#{id} AND pwd=#{pwd}
+	</select>
 </mapper>
